@@ -1,0 +1,187 @@
+/* Reset margin, padding, and box-sizing */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Ensure the full viewport is used */
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* Body styling with a gradient background */
+body {
+  background-image: linear-gradient(60deg, #29323c 0%, #000000 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Arial, sans-serif;
+  color: #fff;
+  flex-direction: column;
+}
+
+/* Navbar styling */
+.navbar {
+  width: 100%;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  position: fixed;
+  top: 0;
+  z-index: 3;
+}
+
+
+/* Logo container styling */
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.valorant-logo {
+  width: 120px; /* Increased width for larger logo size */
+  height: auto;
+  object-fit: contain;
+  filter: brightness(1.5) saturate(2) contrast(1.5); /* Enhanced brightness, saturation, and contrast */
+  mix-blend-mode: screen;
+  position: relative;
+}
+
+/* Glow and glitch effect */
+.valorant-logo::before,
+.valorant-logo::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('./valorant-logo.png'); /* Same image used to create glitch effect */
+  opacity: 0.6;
+  mix-blend-mode: color-dodge;
+  filter: blur(2px) contrast(1.5);
+}
+
+.valorant-logo::before {
+  transform: translate(-2px, -2px);
+  animation: glitch 0.5s infinite;
+}
+
+.valorant-logo::after {
+  transform: translate(2px, 2px);
+  animation: glitch 0.5s infinite reverse;
+}
+
+/* Glitch animation */
+@keyframes glitch {
+  0%, 20%, 40%, 60%, 80%, 100% {
+    opacity: 0.6;
+    transform: translate(2px, -2px);
+  }
+  10%, 30%, 50%, 70%, 90% {
+    opacity: 0.8;
+    transform: translate(-2px, 2px);
+  }
+}
+
+
+/* Nav links styling */
+.nav-links {
+  list-style-type: none;
+  display: flex;
+  gap: 2rem;
+}
+
+.nav-links li {
+  display: inline;
+}
+
+.nav-links a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover {
+  color: #46e3ff; /* Valorant accent color */
+}
+
+/* Main container to hold all elements centered */
+.main {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 80px; /* Adjust for fixed navbar */
+}
+
+/* Canvas styling */
+#canvas {
+  display: block;
+  width: 100%;
+  height: 60vh;
+  background-color: transparent;
+}
+
+/* Background Image Styling */
+.gun-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  mix-blend-mode: screen;
+  opacity: 0.85;
+  filter: brightness(1.6) saturate(2) contrast(1.5);
+  z-index: -1;
+}
+
+/* Glitch effect using pseudo-elements */
+.gun-image::before,
+.gun-image::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('./bg.png'); /* Same image to create glitch effect */
+  mix-blend-mode: color-dodge;
+  opacity: 0.6;
+  filter: blur(1px) contrast(1.4);
+}
+
+.gun-image::before {
+  transform: translate(-3px, -3px); /* Slight offset for glitch */
+  animation: gun-glitch 1.5s infinite;
+}
+
+.gun-image::after {
+  transform: translate(3px, 3px); /* Opposite offset */
+  animation: gun-glitch 1.5s infinite reverse;
+}
+
+/* Keyframes for the glitch animation */
+@keyframes gun-glitch {
+  0%, 20%, 40%, 60%, 80%, 100% {
+    opacity: 0.7;
+    transform: translate(3px, -3px);
+  }
+  10%, 30%, 50%, 70%, 90% {
+    opacity: 0.9;
+    transform: translate(-3px, 3px);
+  }
+}
+
